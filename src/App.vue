@@ -29,6 +29,6 @@ export default {
 </style>
 <style>
 .content-main {
-  background-color: #eeeeee;
+  background-color: #f3f3f3;
 }
 </style>

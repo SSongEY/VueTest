@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <v-app-bar id="AppBar" class="app-bar" dark app>
+        <v-app-bar id="AppBar" class="app-bar" app>
             <v-app-bar-nav-icon color="#555" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title class="text-uppercase ">
                 <!--<span class="font-weight-light">AAE</span>-->
@@ -26,7 +26,7 @@
             </v-menu>
         </v-app-bar>
 
-        <v-navigation-drawer v-model="drawer" dark app class="app-navibar">
+        <v-navigation-drawer v-model="drawer" app class="app-navibar">
             <!--<v-layout column align-center>
                 <v-flex class="mt-5">
                     <v-avatar size="100">
@@ -39,9 +39,9 @@
                 </v-flex>
             </v-layout>-->
             <div class="app-menu-logo">
-                LOGO
+                <v-icon class="app-menu-logo-icon">star</v-icon> LOGO
             </div>
-            <hr class="app-menu-separator">
+            <!--<hr class="app-menu-separator">-->
             <v-list flat>
                 <v-list-item class="app-menu-item" v-for="route in routes" :key="route.name" router :to="route.path" active-class="border">
                     <v-list-item-action>
@@ -70,38 +70,49 @@ export default {
 }
 </script>
 <style scoped>
-    .border {
-        border-radius: 4px;
-        background-color: #e91e63 !important;
-    }
-    .app-navibar {
-        /*top: 64px !important;*/
-        background-color: #151616 !important;
-    }
-    .app-bar {
-        /*left: 0px !important;*/
-        color: black !important;
-        background-color: #eeeeee !important;
-        box-shadow: 0 0 0 0 !important;
-    }
-    .app-menu-logo {
-        color: white;
-        font-size: 20px;
-        text-align: center;
-        margin:15px 0px;
-    }
-    .app-menu-separator {
-        border: solid;
-        border-width: thin 0 0 0;
-        border-color: hsla(0, 0%, 71%, .1);
-        background-color: hsla(0, 0%, 71%, .5);
-        margin: 10px 15px;
-    }
-    .app-menu-item {
-        margin: 10px 10px !important;
-    }
-    .app-menu-item-text {
-        font-weight: 300;
-        font-size: 15px;
-    }
+.border {
+    /*border-radius: 4px;*/
+    /*background-color: #e91e63 !important;*/
+    color: #ff9117 !important;
+}
+.app-navibar {
+    /*top: 64px !important;*/
+    background-color: #ffffff !important;
+}
+.app-bar {
+    /*left: 0px !important;*/
+    color: black !important;
+    box-shadow: 0 0 0 0 !important;
+
+    border-style: solid;
+    border-top: hidden;
+    border-left: hidden;
+    border-right: hidden;
+    border-width: thin;
+    border-bottom-color: #e6dbdb;
+}
+.app-menu-logo-icon {
+    color: #ff9117;
+}
+.app-menu-logo {
+    color: #474250;
+    font-size: 20px;
+    text-align: center;
+    margin:15px 0px;
+}
+.app-menu-separator {
+    border: solid;
+    border-width: thin 0 0 0;
+    border-color: hsla(0, 0%, 71%, .1);
+    background-color: hsla(0, 0%, 71%, .5);
+    margin: 10px 15px;
+}
+.app-menu-item {
+    margin: 10px 10px;
+    color: #535659;
+}
+.app-menu-item-text {
+    font-weight: 400;
+    font-size: 15px;
+}
 </style>
