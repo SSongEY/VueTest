@@ -1,39 +1,25 @@
 <template>
-    <v-card
-        v-bind="$attrs"
-        :style="styles"
-        v-on="$listeners"
-    >
-        <div
-            class="v-offset"
-            v-if="hasOffset"
-            :inline="inline"
-            :full-width="fullWidth"
-            :offset="offset"
-        >
-            <v-card
-                v-if="!$slots.offset"
-                :color="color"
-                :class="`elevation-${elevation}`"
-                class="v-card--material__header"
-                dark
-            >
-                <slot v-if="!title && !text" name="header" />
-                <span v-else>
-                    <h4 class="title font-weight-light mb-2" v-text="title" />
-                    <p class="category font-weight-thin" v-text="text" />
-                </span>
-            </v-card>
-            <slot v-else name="offset" />
-        </div>
+    <v-card class="card"
+        :outlined="outlined"
+        :raised="raised"
+        :shaped="shaped"
+        :tile="tile"
 
-        <v-card-text>
-            <slot/>
+        :elevation="elevation"
+    >
+        <v-list-item v-if="title || this.$slots.head || this.$slots.headItems">
+            <v-list-item-title v-if="title" class="card-title">{{title}}</v-list-item-title>
+            <slot name="head" v-else />
+            <v-spacer/>
+            <slot name="headItems"/>
+        </v-list-item>
+
+        <v-card-text v-if="this.$slots.default">
+            <slot />
         </v-card-text>
 
-        <v-divider v-if="$slots.actions" class="mx-3"/>
-        <v-card-actions v-if="$slots.actions">
-            <slot name="actions"/>
+        <v-card-actions v-if="this.$slots.footer">
+            <slot name="footer"></slot>
         </v-card-actions>
     </v-card>
 </template>
@@ -43,61 +29,50 @@ export default {
     inheritAttrs: false,
 
     props: {
-        color: {
-            type: String,
-            default: 'secondary'
+        /// outline style
+        outlined: {
+            type: Boolean,
+            default: false
         },
+        raised: {
+            type: Boolean,
+            default: false
+        },
+        shaped: {
+            type: Boolean,
+            default: false
+        },
+        tile: {
+            type: Boolean,
+            default: false
+        },
+
+        /// outline shadow
         elevation: {
             type: [Number, String],
-            default: 10
-        },
-        inline: {
-            type: Boolean,
-            default: false
-        },
-        fullWidth: {
-            type: Boolean,
-            default: false
-        },
-        offset: {
-            type: [Number, String],
-            default: 24
-        },
-        title: {
-            type: String,
             default: undefined
         },
-        text: {
+
+        /// title
+        title: {
             type: String,
             default: undefined
         }
     },
-
-    computed: {
-        hasOffset() {
-            return this.$slots.header ||
-                this.$slots.offset ||
-                this.title ||
-                this.text
-        },
-        styles() {
-            if (!this.hasOffset) return null
-
-            return {
-                marginBottom: `${this.offset}px`,
-                marginTop: `${this.offset * 2}px`
-            }
-        }
+    created() {
+        console.log('this: ', this)
     }
 }
 </script>
 
-<style lang="scss">
-    .v-card--material {
-        &__header {
-            &.v-card {
-                border-radius: 4px;
-            }
-        }
-    }
+<style lang="scss" scoped>
+.card {
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.card-title {
+    color: #485158;
+    font-size: 20px;
+    font-wigth: 400;
+}
 </style>

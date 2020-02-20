@@ -1,101 +1,104 @@
 <template>
-    <div class="Test">
+    <div id="page-dev-cards">
         <v-container>
-
-            <v-layout align-center justify-space-around row fill-height mt-4>
-                <v-flex xs12>
-                    <v-card
-                        class="mx-auto"
-                        max-width="344"
-                        shaped
-                    >
-                        <v-list-item three-line>
-                            <v-list-item-content>
-                                <div class="overline mb-4">OVERLINE</div>
-                                <v-list-item-title class="headline mb-1">Headline 5</v-list-item-title>
-                                <v-list-item-subtitle>Greyhound divisely hello coldly fonwderfully</v-list-item-subtitle>
-                            </v-list-item-content>
-
-                            <v-list-item-avatar
-                                    tile
-                                    size="80"
-                                    color="grey"
-                            ></v-list-item-avatar>
-                        </v-list-item>
-
-                        <v-card-actions>
-                            <v-btn text>Button</v-btn>
-                            <v-btn text>Button</v-btn>
-                        </v-card-actions>
-                    </v-card>
+            <v-layout align-center justify-space-around row fill-height>
+                <v-flex xs12 class="text-center" ma-5>
+                    <span class="display-1 font-weight-light">Custom Card Slot</span>
+                    <br/>
+                    <span class="subtitle-1 font-weight-light deepOrange--text">Custom Card Slot 구조</span>
                 </v-flex>
-            </v-layout>
 
-            <!---- Card ---->
-            <v-layout align-center justify-space-around row fill-height mt-4>
-                <v-flex xs3 class="text-center" ma-2>
+                <!-- SLOT TEMPLATE -1 -->
+                <v-flex sm12 md5 ma-3>
+                    <c-card title="title">
+                        <template #headItems>
+                            <span class="blue--text">[#headItems] slot</span>
+                        </template>
+                        <template #footer>
+                            <span class="deepOrange--text">[#footer] slot</span>
+                        </template>
+                        <span class="green--text">contents</span>
+                    </c-card>
+                </v-flex>
+
+                <!-- SLOT TEMPLATE -2 -->
+                <v-flex sm12 md5 ma-3>
                     <c-card>
-                        <v-flex xs12>
-                            <div>none header card</div>
-                        </v-flex>
-                    </c-card>
-                </v-flex>
-                <v-flex xs3 class="text-center" ma-2>
-                    <c-card outlined>
-                        <v-flex xs12>
-                            <div>none header card</div>
-                        </v-flex>
-                    </c-card>
-                </v-flex>
-                <v-flex xs3 class="text-center" pa-2>
-                    <c-card sharped>
-                        <v-flex xs12>
-                            <div>none header card</div>
-                        </v-flex>
+                        <template #head>
+                            <span class="red--text">[#head] slot</span>
+                        </template>
+                        <template #headItems>
+                            <span class="blue--text">[#headItems] slot</span>
+                        </template>
+                        <template #footer>
+                            <span class="deepOrange--text">[#footer] slot</span>
+                        </template>
+                        <span class="green--text">contens</span>
                     </c-card>
                 </v-flex>
             </v-layout>
 
-            <v-layout align-center justify-space-around row fill-height mt-4>
-                <v-flex xs6 pa-2>
-                    <c-card color="red" title="Red Color Title Bar" text="subtitle">
-                        <v-flex xs2>
-                            <div>contents</div>
-                        </v-flex>
-                    </c-card>
-                </v-flex>
-                <v-flex xs6 pa-2>
-                    <c-card class="text-center" color="blue" title="Blue Color Title Bar - Center" text="Simple Subtitle">
-                        <v-flex xs12 class="text-center">
-                            <div>contents</div>
-                        </v-flex>
-                    </c-card>
-                </v-flex>
-            </v-layout>
 
-            <v-layout row fill-height mt-4>
-                <v-flex xs6 pa-2>
-                    <c-card color="orange" title="Orange Color Title Bar - Has Action Slot">
-                        <v-flex xs12>
-                            <div>contents</div>
-                        </v-flex>
-                        <template slot="actions">
-                            <v-icon class="mr-2" small>mdi-clock-outline</v-icon>
-                            <span class="caption grey--text font-weight-light">updated 4 minutes ago</span>
+            <v-layout align-center justify-space-around row fill-height mt-10>
+                <v-flex xs12 class="text-center" ma-5>
+                    <span class="display-1 font-weight-light">Custom Card Examples</span>
+                    <br/>
+                    <span class="subtitle-1 font-weight-light deepOrange--text">Custom Card 예제</span>
+                </v-flex>
+
+                <!-- EXAMPLE -1 -->
+                <v-flex sm12 md5 mb-5>
+                    <c-card title="Custom Card">
+                        <template #headItems>
+                            <v-icon color='grey'>sentiment_dissatisfied</v-icon>
+                            <v-icon color='grey'>sentiment_satisfied</v-icon>
+                            <v-icon color='grey'>sentiment_very_dissatisfied</v-icon>
+                            <v-icon color='grey'>sentiment_very_satisfied</v-icon>
                         </template>
+                        <template #footer>
+                            <div class="text-center">
+                                <v-icon color='grey'>star</v-icon>
+                                <v-icon color='grey'>star_border</v-icon>
+                                <v-icon color='grey'>star_half</v-icon>
+                            </div>
+                            <v-spacer/>
+                            <v-icon color='grey'>error</v-icon>
+                            <v-icon color='grey'>notification_important</v-icon>
+                            <v-icon color='grey'>warning</v-icon>
+                        </template>
+                        <v-layout align-center justify-space-around row fill-height>
+                            <v-flex xs12>
+                                <div class="text-center green">contents</div>
+                            </v-flex>
+                        </v-layout>
                     </c-card>
                 </v-flex>
-                <v-flex xs6>
-                    <c-card color="green">
-                        <template slot="header">
-                            <h1>component1</h1>
-                        </template>
-                        <v-flex xs12>
-                            <h4>component2</h4>
-                        </v-flex>
-                        <template slot="actions">
-                            <h5>component3</h5>
-                        </template>
+
+                <v-flex xs12 mb-5>
+                    <!-- EXAMPLE -2 -->
+                    <c-card title="Card Border">
+                        <v-layout align-center justify-space-around row fill-height ma-5>
+                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                                <c-card title="Outlined" outlined>
+                                    content
+                                </c-card>
+                            </v-flex>
+                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                                <c-card title="Raised" raised>
+                                    content
+                                </c-card>
+                            </v-flex>
+                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                                <c-card title="Shaped" shaped>
+                                    content
+                                </c-card>
+                            </v-flex>
+                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                                <c-card title="Tile" tile>
+                                    content
+                                </c-card>
+                            </v-flex>
+                        </v-layout>
                     </c-card>
                 </v-flex>
             </v-layout>
@@ -104,16 +107,17 @@
 </template>
 
 <script>
-    export default {
-        data: () => ({
-        }),
-        methods: {
-            onClickRed: function(e) {
-                alert('onClickRed')
-            },
-            onClickGreen: function(e) {
-                alert('onClickGreen')
-            }
+export default {
+    data: () => ({
+    }),
+    methods: {
+        onClickRed: function(e) {
+            alert('onClickRed');
+
+        },
+        onClickGreen: function(e) {
+            alert('onClickGreen')
         }
     }
+}
 </script>

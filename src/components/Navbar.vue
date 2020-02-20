@@ -4,7 +4,7 @@
             <v-app-bar-nav-icon color="#555" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title class="text-uppercase ">
                 <!--<span class="font-weight-light">AAE</span>-->
-                <span>Page</span>
+                <span>{{currentPage.name}}</span>
             </v-toolbar-title>
 
             <v-spacer></v-spacer>
@@ -19,7 +19,7 @@
                     </v-btn>
                 </template>
                 <v-list flat>
-                    <v-list-item v-for="route in routes" :key="route.name" router :to="route.path" active-class="border">
+                    <v-list-item v-for="route in routes" :key="route.name" router :to="route.path" active-class="border" @click="currentPage = route">
                         <v-list-item-title>{{route.name}}</v-list-item-title>
                     </v-list-item>
                 </v-list>
@@ -39,11 +39,18 @@
                 </v-flex>
             </v-layout>-->
             <div class="app-menu-logo">
-                <v-icon class="app-menu-logo-icon">star</v-icon> LOGO
+                <!--<v-layout column align-center>
+                    <v-flex class="d-flex align-center text-center">
+                        <img class="app-menu-logo-img" src="/amo.png" alt="">
+                        <span class="ml-2">LOGO</span>
+                    </v-flex>
+                </v-layout>-->
+
+                <v-icon class="app-menu-logo-icon">local_car_wash</v-icon> LOGO
             </div>
             <!--<hr class="app-menu-separator">-->
             <v-list flat>
-                <v-list-item class="app-menu-item" v-for="route in routes" :key="route.name" router :to="route.path" active-class="border">
+                <v-list-item class="app-menu-item" v-for="route in routes" :key="route.name" router :to="route.path" active-class="border" @click="currentPage = route">
                     <v-list-item-action>
                         <v-icon>{{route.icon}}</v-icon>
                     </v-list-item-action>
@@ -62,10 +69,14 @@ export default {
     data: () => ({
         drawer: true,
         routes: routes,
+        currentPage: {}
     }),
     components: {
         // Popup
     },
+    mounted() {
+        this.currentPage = this.$route;
+    }
 
 }
 </script>
@@ -90,6 +101,10 @@ export default {
     border-right: hidden;
     border-width: thin;
     border-bottom-color: #e6dbdb;
+}
+.app-menu-logo-img {
+    height: 30px;
+    width: 30px;
 }
 .app-menu-logo-icon {
     color: #ff9117;

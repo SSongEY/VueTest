@@ -1,9 +1,16 @@
 <template>
-    <div class="Test">
+    <div id="page-dev-buttons">
         <v-container>
-            <v-layout align-center justify-space-around row fill-height mt-4>
-                <v-flex xs12>
-                    <c-card color="indigo" title="Default Button">
+            <v-layout align-center justify-space-around row fill-height>
+                <v-flex xs12 class="text-center" ma-5>
+                    <span class="display-1 font-weight-light">Custom Button</span>
+                    <br/>
+                    <span class="subtitle-1 font-weight-light deepOrange--text">Custom Button Examples</span>
+                </v-flex>
+
+                <!-- EXAMPLE -1 -->
+                <v-flex xs12 ma-4>
+                    <c-card title="Button Color">
                         <v-layout align-center justify-space-around row fill-height>
                             <c-btn color="red" @click="onClickRed">Red</c-btn>
                             <c-btn color="green" @click="onClickGreen">Green</c-btn>
@@ -13,8 +20,10 @@
                         </v-layout>
                     </c-card>
                 </v-flex>
-                <v-flex xs12>
-                    <c-card color="indigo" title="Size">
+
+                <!-- EXAMPLE -2 -->
+                <v-flex xs12 ma-4>
+                    <c-card title="Size">
                         <v-layout align-center justify-space-around row fill-height>
                             <c-btn color="red" small>Small</c-btn>
                             <c-btn color="green">Default</c-btn>
@@ -25,16 +34,20 @@
                         </v-layout>
                     </c-card>
                 </v-flex>
-                <v-flex xs12>
-                    <c-card color="indigo" title="Text Button">
+
+                <!-- EXAMPLE -3 -->
+                <v-flex xs12 ma-4>
+                    <c-card title="Text Button">
                         <v-layout align-center justify-space-around row fill-height>
                             <c-btn color="red" text>Text Button</c-btn>
                             <c-btn color="green" text>Text Button</c-btn>
                         </v-layout>
                     </c-card>
                 </v-flex>
-                <v-flex xs12>
-                    <c-card color="indigo" title="Icon Button">
+
+                <!-- EXAMPLE -4 -->
+                <v-flex xs12 ma-4>
+                    <c-card title="Icon Button">
                         <v-layout align-center justify-space-around row fill-height mt-4>
                             <c-btn color="red" icon iconName="favorite"/>
                             <c-btn color="blue" fab iconName="favorite"/>
@@ -42,8 +55,10 @@
                         </v-layout>
                     </c-card>
                 </v-flex>
-                <v-flex xs12>
-                    <c-card color="indigo" title="Outlined">
+
+                <!-- EXAMPLE -5 -->
+                <v-flex xs12 ma-4>
+                    <c-card title="Outlined">
                         <v-layout align-center justify-space-around row fill-height mt-4>
                             <c-btn color="blue" outlined fab icon iconName="favorite"/>
                             <c-btn color="blue" outlined iconName="favorite">Button</c-btn>
@@ -51,8 +66,10 @@
                         </v-layout>
                     </c-card>
                 </v-flex>
-                <v-flex xs12>
-                    <c-card color="indigo" title="Rounded">
+
+                <!-- EXAMPLE -6 -->
+                <v-flex xs12 ma-4>
+                    <c-card title="Rounded">
                         <v-layout align-center justify-space-around row fill-height mt-4>
                             <c-btn color="blue" rounded iconName="favorite">Button</c-btn>
                             <c-btn color="blue" rounded>Button</c-btn>
@@ -66,7 +83,6 @@
 
 <script>
 export default {
-    name: 'test',
     data: () => ({
     }),
     methods: {
@@ -75,7 +91,7 @@ export default {
         },
         onClickGreen: function(e) {
             alert('onClickGreen')
-        }
+        },
     }
 }
 </script>

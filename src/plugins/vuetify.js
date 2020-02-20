@@ -1,4 +1,4 @@
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
 
@@ -9,7 +9,32 @@ export default new Vuetify({
         iconfont: 'md',
       },
     theme: {
-        red: '#ff5252',
-        green: '#4caf50',
+        themes: {
+            light: {
+                red: '#ff3a4c',
+                deepRed: '#ff0017',
+                green: '#58deb6',
+                deepGreen: '#18bb4b',
+                blue: '#65a8fe',
+                deepBlue: '#0070ff',
+                orange: '#ffb35e',
+                lightOrange: '#ffb767',
+                deepOrange: '#fb8502',
+                grey: '#8d99a3',
+                deepGrey: '#485158',
+                lightGrey: '#d9dee4',
+                light: '#e7e7e7',
+            },
+            dark: {
+                red: '#ff3a4c',
+                green: '#58deb6',
+                deepGreen: '#18bb4b',
+                blue: '#65a8fe',
+                orange: '#ffb35e',
+                grey: '#8d99a3',
+                deepGrey: '#485158',
+                lightGray: '#d2d8de',
+            },
+        },
     }
 });

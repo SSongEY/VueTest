@@ -1,131 +1,146 @@
 <template>
-    <v-data-table
-        :headers="headers"
+    <div class="text-center">
+        <v-data-table
+                :headers="headers"
 
-        item-key="name"
-        :items="desserts"
+                :item-key="itemKey"
+                :items="items"
 
-        show-select
-        v-model="selected"
-        :single-select="singleSelect"
+                :show-expand="showExpand"
+                :single-expand="singleExpand"
 
-        show-expand
-        :single-expand="singleExpand"
-        :expanded.sync="expanded"
+                :show-select="showSelect"
+                :single-select="singleSelect"
+                v-model="selectedRows"
 
-        :dense="dense"
-        class="elevation-1"
-    >
-        <template v-slot:expanded-item="{ headers }">
-            <td :colspan="headers.length">Peek-a-boo!</td>
-        </template>
-    </v-data-table>
+                :dense="dense"
+
+                class="elevation-1"
+
+                @click:row="onClickRow($event)"
+        >
+            <!-- column item -->
+            <template v-for="(header, idx) in getItemSlotHeaders" v-slot:[`item.${headers[idx].value}`]="{ item }">
+                <slot :name="headers[idx].value" :item="item">
+                    {{ item[headers[idx].value] }}
+                </slot>
+            </template>
+
+
+            <!-- expanded item/row -->
+            <template #expanded-item="{ item, headers }">
+                <td :colspan="headers.length">
+                    <slot name="expanded" :item="item">
+                    </slot>
+                </td>
+            </template>
+        </v-data-table>
+        <!--<v-pagination
+            v-model="page"
+            :circle="circle"
+            :length="length"
+            :page="page"
+            :total-visible="totalVisible"
+        />-->
+    </div>
 </template>
 <script>
 export default {
-    data () {
-        return {
-            expanded: [],
-            singleExpand: false,
-            dense: false,
-            singleSelect: false,
-            selected: [],
-            headers: [
-                {
-                    text: 'Dessert (100g serving)',
-                    align: 'left',
-                    sortable: false,
-                    value: 'name',
-                },
-                { text: 'Calories', value: 'calories' },
-                { text: 'Fat (g)', value: 'fat' },
-                { text: 'Carbs (g)', value: 'carbs' },
-                { text: 'Protein (g)', value: 'protein' },
-                { text: 'Iron (%)', value: 'iron' },
-            ],
-            desserts: [
-                {
-                    name: 'Frozen Yogurt',
-                    calories: 159,
-                    fat: 6.0,
-                    carbs: 24,
-                    protein: 4.0,
-                    iron: '1%',
-                },
-                {
-                    name: 'Ice cream sandwich',
-                    calories: 237,
-                    fat: 9.0,
-                    carbs: 37,
-                    protein: 4.3,
-                    iron: '1%',
-                },
-                {
-                    name: 'Eclair',
-                    calories: 262,
-                    fat: 16.0,
-                    carbs: 23,
-                    protein: 6.0,
-                    iron: '7%',
-                },
-                {
-                    name: 'Cupcake',
-                    calories: 305,
-                    fat: 3.7,
-                    carbs: 67,
-                    protein: 4.3,
-                    iron: '8%',
-                },
-                {
-                    name: 'Gingerbread',
-                    calories: 356,
-                    fat: 16.0,
-                    carbs: 49,
-                    protein: 3.9,
-                    iron: '16%',
-                },
-                {
-                    name: 'Jelly bean',
-                    calories: 375,
-                    fat: 0.0,
-                    carbs: 94,
-                    protein: 0.0,
-                    iron: '0%',
-                },
-                {
-                    name: 'Lollipop',
-                    calories: 392,
-                    fat: 0.2,
-                    carbs: 98,
-                    protein: 0,
-                    iron: '2%',
-                },
-                {
-                    name: 'Honeycomb',
-                    calories: 408,
-                    fat: 3.2,
-                    carbs: 87,
-                    protein: 6.5,
-                    iron: '45%',
-                },
-                {
-                    name: 'Donut',
-                    calories: 452,
-                    fat: 25.0,
-                    carbs: 51,
-                    protein: 4.9,
-                    iron: '22%',
-                },
-                {
-                    name: 'KitKat',
-                    calories: 518,
-                    fat: 26.0,
-                    carbs: 65,
-                    protein: 7,
-                    iron: '6%',
-                },
-            ],
+    props: {
+        // pagination: { // ..ing
+        //     type: Object
+        // },
+
+        headers: { // table header columns
+            type: Array,
+            //properties
+            // {
+            //     text: string // describe data
+            //     value: string // header value (key)
+            //     align?: 'start' | 'center' | 'end'
+            //     sortable?: boolean
+            //     filterable?: boolean
+            //     divider?: boolean
+            //     class?: string | string[]
+            //     width?: string | number
+            //     filter?: (value: any, search: string, item: any) => boolean
+            //     sort?: (a: any, b: any) => number
+            // }
+        },
+        itemKey: { // unique key
+            type: String,
+        },
+        items: { // items
+            type: Array,
+        },
+        showExpand: { // Shows the expand
+            type: Boolean,
+            default: false
+        },
+        singleExpand: { // single expand
+            type: Boolean,
+            default: false
+        },
+        showSelect: {// Shows the select
+            type: Boolean,
+            default: false
+        },
+        singleSelect: { // single select
+            type: Boolean,
+            default: false
+        },
+        dense: { // decrease the height of row
+            type: Boolean,
+            default : false
+        },
+        selected: { // selected rows, bind with selectedRows
+            type: Array,
+            default: () => []
         }
     },
+    data: () => {
+        return {
+            selectedRows: [],
+            page: 1
+        }
+    },
+    created() {
+        if(this.showExpand) {
+            this.headers.push({text: '', value: 'data-table-expand'})
+        }
+    },
+    methods: {
+        onClickRow: function(e) {
+            this.$emit('click', e)
+        }
+    },
+    computed: {
+        getItemSlotHeaders: function() {
+            return this.showExpand ? this.headers.slice(0, this.headers.length-1) : this.headers
+        }
+    },
+    watch: {
+        selectedRows: function(value) {
+            this.$emit('update:selected', value)
+        }
+    }
 }
 </script>
+<style lang="scss" scoped>
+.v-data-footer__select {
+    flex-basis: auto;
+
+    .v-select {
+        flex-basis: 50px;
+
+        .v-select__selections {
+            flex-basis: auto;
+        }
+    }
+}
+
+.v-list-item__content {
+    flex: 1 1 auto;
+    min-width: 40px;
+}
+</style>

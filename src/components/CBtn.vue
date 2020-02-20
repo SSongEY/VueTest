@@ -1,13 +1,11 @@
 <template>
     <v-btn
-        @click="callback($event)"
+        @click="clicked($event)"
         class="white--text font-weight-regular"
         :class="classes"
-        :value="value"
 
         :disabled="disabled"
         :color="color"
-        :dark="dark"
 
         :outlined="outlined"
         :text="text"
@@ -32,24 +30,15 @@ export default {
             type: String,
             default: undefined
         },
-        value: {
-            type: String,
-            default: undefined
-        },
-        //
-        color: {
+        color: { // button color
             type: String,
             default: 'white'
         },
-        disabled: {
+        disabled: { // disable click event
             type: Boolean,
             default: false
         },
-        dark: {
-            type: Boolean,
-            default: false
-        },
-        iconName: { // v-icon value
+        iconName: { // icon name
             type: String,
             default: undefined
         },
@@ -92,12 +81,10 @@ export default {
         },
     },
     methods: {
-        callback: function(e) {
+        clicked: function(e) {
             this.$emit('click', e);
         }
     },
 }
 </script>
 
-<style>
-</style>

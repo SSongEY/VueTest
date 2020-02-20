@@ -27,8 +27,3 @@ export default {
 <style lang="scss">
 @import './styles/index.scss';
 </style>
-<style>
-.content-main {
-  background-color: #f3f3f3;
-}
-</style>
