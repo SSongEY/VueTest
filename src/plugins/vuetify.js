@@ -23,7 +23,8 @@ export default new Vuetify({
                 grey: '#8d99a3',
                 deepGrey: '#485158',
                 lightGrey: '#d9dee4',
-                light: '#e7e7e7',
+                white: '#ffffff',
+
             },
             dark: {
                 red: '#ff3a4c',

@@ -1,15 +1,15 @@
 <template>
     <div id="page-dev-cards">
         <v-container>
-            <v-layout align-center justify-space-around row fill-height>
-                <v-flex xs12 class="text-center" ma-5>
+            <v-row class="py-8" align="center" justify="center">
+                <v-col cols="12" class="text-center">
                     <span class="display-1 font-weight-light">Custom Card Slot</span>
                     <br/>
                     <span class="subtitle-1 font-weight-light deepOrange--text">Custom Card Slot 구조</span>
-                </v-flex>
+                </v-col>
 
                 <!-- SLOT TEMPLATE -1 -->
-                <v-flex sm12 md5 ma-3>
+                <v-col cols="12" md="6">
                     <c-card title="title">
                         <template #headItems>
                             <span class="blue--text">[#headItems] slot</span>
@@ -19,10 +19,10 @@
                         </template>
                         <span class="green--text">contents</span>
                     </c-card>
-                </v-flex>
+                </v-col>
 
                 <!-- SLOT TEMPLATE -2 -->
-                <v-flex sm12 md5 ma-3>
+                <v-col cols="12" md="6">
                     <c-card>
                         <template #head>
                             <span class="red--text">[#head] slot</span>
@@ -35,19 +35,18 @@
                         </template>
                         <span class="green--text">contens</span>
                     </c-card>
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
 
-
-            <v-layout align-center justify-space-around row fill-height mt-10>
-                <v-flex xs12 class="text-center" ma-5>
+            <v-row class="py-8" align="center" justify="center">
+                <v-col cols="12" class="text-center">
                     <span class="display-1 font-weight-light">Custom Card Examples</span>
                     <br/>
                     <span class="subtitle-1 font-weight-light deepOrange--text">Custom Card 예제</span>
-                </v-flex>
+                </v-col>
 
                 <!-- EXAMPLE -1 -->
-                <v-flex sm12 md5 mb-5>
+                <v-col cols="12" md="5">
                     <c-card title="Custom Card">
                         <template #headItems>
                             <v-icon color='grey'>sentiment_dissatisfied</v-icon>
@@ -66,42 +65,38 @@
                             <v-icon color='grey'>notification_important</v-icon>
                             <v-icon color='grey'>warning</v-icon>
                         </template>
-                        <v-layout align-center justify-space-around row fill-height>
-                            <v-flex xs12>
-                                <div class="text-center green">contents</div>
-                            </v-flex>
-                        </v-layout>
+                        <div class="text-center green">contents</div>
                     </c-card>
-                </v-flex>
+                </v-col>
 
-                <v-flex xs12 mb-5>
+                <v-col cols="12">
                     <!-- EXAMPLE -2 -->
                     <c-card title="Card Border">
-                        <v-layout align-center justify-space-around row fill-height ma-5>
-                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                        <v-row justify="center">
+                            <v-col cols="12" sm="6" md="6" lg="3">
                                 <c-card title="Outlined" outlined>
                                     content
                                 </c-card>
-                            </v-flex>
-                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="6" lg="3">
                                 <c-card title="Raised" raised>
                                     content
                                 </c-card>
-                            </v-flex>
-                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="6" lg="3">
                                 <c-card title="Shaped" shaped>
                                     content
                                 </c-card>
-                            </v-flex>
-                            <v-flex xs12 sm5 md5 lg2 ma-3>
+                            </v-col>
+                            <v-col cols="12" sm="6" md="6" lg="3">
                                 <c-card title="Tile" tile>
                                     content
                                 </c-card>
-                            </v-flex>
-                        </v-layout>
+                            </v-col>
+                        </v-row>
                     </c-card>
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
         </v-container>
     </div>
 </template>

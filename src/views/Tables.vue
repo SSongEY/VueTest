@@ -1,158 +1,160 @@
 <template>
     <div id="page-dev-tables">
-        <v-layout justify-space-around row fill-height>
-            <v-flex xs12 class="text-center" ma-5>
-                <span class="display-1 font-weight-light">Custom Table Slot</span>
-                <br/>
-                <span class="subtitle-1 font-weight-light deepOrange--text">Custom Table Slot 구조</span>
-            </v-flex>
+        <v-container>
+            <v-row justify="center" class="py-8">
+                <v-col cols="12" class="text-center">
+                    <span class="display-1 font-weight-light">Custom Table Slot</span>
+                    <br/>
+                    <span class="subtitle-1 font-weight-light deepOrange--text">Custom Table Slot 구조</span>
+                </v-col>
 
-            <!-- SLOT TEMPLATE -1 -->
-            <v-flex xs12 md6>
-                <c-card title="Table Slot">
-                    <c-table
-                        :headers="tableData.headers"
-                        itemKey="id"
-                        :items="tableData.data"
+                <!-- SLOT TEMPLATE -1 -->
+                <v-col cols="12" md="6">
+                    <c-card title="Table Slot">
+                        <c-table
+                            :headers="tableData.headers"
+                            itemKey="id"
+                            :items="tableData.data"
 
-                        showExpand
-                    >
-                        <template #header2="{ item }">
-                            <span class="deepGreen--text">[#column of target header] slot</span>
-                            <br/>
-                            <span>data: {{item.header2}}</span>
-                        </template>
+                            showExpand
+                        >
+                            <template #header2="{ item }">
+                                <span class="deepGreen--text">[#column of target header] slot</span>
+                                <br/>
+                                <span>data: {{item.header2}}</span>
+                            </template>
 
-                        <template #expanded="{item}">
-                            <span class="blue--text">[#expaned] slot</span>
-                            <br/>
-                            <br/>
-                            <span>row item: </span>
-                            <br/>
-                            <span>{{item}}</span>
-                        </template>
-                    </c-table>
-                </c-card>
-            </v-flex>
-        </v-layout>
-
-
-        <v-layout justify-space-around row fill-height mx-5 mt-10>
-            <v-flex xs12 class="text-center" mt-12 mb-5>
-                <span class="display-1 font-weight-light">Custom Table Examples</span>
-                <br/>
-                <span class="subtitle-1 font-weight-light deepOrange--text">Custom Table 예제</span>
-            </v-flex>
-
-            <!-- EXAMPLE -1 -->
-            <v-flex xs12 mb-10>
-                <c-card title="Default table (has click event)">
-                    <c-table
-                        :headers="tableData1.headers"
-                        itemKey="name"
-                        :items="tableData1.desserts"
-                        @click="onClickTableRow"
-                    />
-                </c-card>
-            </v-flex>
-
-            <!-- EXAMPLE -2 -->
-            <v-flex xs12 mb-10>
-                <c-card title="Selectable rows">
-                    <c-table
-                        :headers="tableData2.headers"
-                        itemKey="name"
-                        :items="tableData2.desserts"
-
-                        showSelect
-                        :selected.sync="tableData2.selected"
-                    />
-                </c-card>
-            </v-flex>
+                            <template #expanded="{item}">
+                                <span class="blue--text">[#expaned] slot</span>
+                                <br/>
+                                <br/>
+                                <span>row item: </span>
+                                <br/>
+                                <span>{{item}}</span>
+                            </template>
+                        </c-table>
+                    </c-card>
+                </v-col>
+            </v-row>
 
 
-            <!-- EXAMPLE -3 -->
-            <v-flex xs12 mb-10>
-                <c-card title="Single selectable rows">
-                    <c-table
-                        :headers="tableData3.headers"
-                        itemKey="name"
-                        :items="tableData3.desserts"
+            <v-row justify="center" class="py-8">
+                <v-col cols="12" class="text-center">
+                    <span class="display-1 font-weight-light">Custom Table Examples</span>
+                    <br/>
+                    <span class="subtitle-1 font-weight-light deepOrange--text">Custom Table 예제</span>
+                </v-col>
 
-                        showSelect
-                        singleSelect
-                        :selected.sync="tableData3.selected"
-                    />
-                </c-card>
-            </v-flex>
+                <!-- EXAMPLE -1 -->
+                <v-col cols="12">
+                    <c-card title="Default table (has click event)" outlined>
+                        <c-table
+                            :headers="tableData1.headers"
+                            itemKey="name"
+                            :items="tableData1.desserts"
+                            @click="onClickTableRow"
+                        />
+                    </c-card>
+                </v-col>
 
+                <!-- EXAMPLE -2 -->
+                <v-col cols="12">
+                    <c-card title="Selectable rows" outlined>
+                        <c-table
+                            :headers="tableData2.headers"
+                            itemKey="name"
+                            :items="tableData2.desserts"
 
-            <!-- EXAMPLE -4 -->
-            <v-flex xs12 mb-10>
-                <c-card title="Expandable rows">
-                    <c-table
-                        :headers="tableData4.headers"
-                        itemKey="name"
-                        :items="tableData4.desserts"
-
-                        showExpand
-                        :selected.sync="tableData4.selected"
-                    >
-                        <template v-slot:expanded="item">
-                            <div>
-                                {{item}}
-                            </div>
-                        </template>
-                    </c-table>
-                </c-card>
-            </v-flex>
-
-            <!-- EXAMPLE -5 -->
-            <v-flex xs12 mb-10>
-                <c-card title="Single expandable rows">
-                    <c-table
-                        :headers="tableData5.headers"
-                        itemKey="name"
-                        :items="tableData5.desserts"
-
-                        showExpand
-                        singleExpand
-                        :selected.sync="tableData5.selected"
-                    >
-                        <template v-slot:expanded="item">
-                            <div>
-                                {{item}}
-                            </div>
-                        </template>
-                    </c-table>
-                </c-card>
-            </v-flex>
-
-            <!-- EXAMPLE -6 -->
-            <v-flex xs12 mb-10>
-                <c-card title="Custom item slot">
-                    <c-table
-                        :headers="tableData1.headers"
-                        itemKey="name"
-                        :items="tableData1.desserts"
-                    >
-                        <template #calories="{ item }">
-                            <v-chip color="green" dark>{{ item.calories }}</v-chip>
-                        </template>
-
-                        <template #protein="{ item }">
-                            <v-chip color="blue" dark>{{ item.protein }}</v-chip>
-                        </template>
-                    </c-table>
-                </c-card>
-            </v-flex>
-        </v-layout>
+                            showSelect
+                            :selected.sync="tableData2.selected"
+                        />
+                    </c-card>
+                </v-col>
 
 
-        <v-snackbar v-model="snackFlag" :timeout="3000" color="deepOrange">
-            {{ snackText }}
-            <v-btn text @click="snackFlag = false">Close</v-btn>
-        </v-snackbar>
+                <!-- EXAMPLE -3 -->
+                <v-col cols="12">
+                    <c-card title="Single selectable rows" outlined>
+                        <c-table
+                            :headers="tableData3.headers"
+                            itemKey="name"
+                            :items="tableData3.desserts"
+
+                            showSelect
+                            singleSelect
+                            :selected.sync="tableData3.selected"
+                        />
+                    </c-card>
+                </v-col>
+
+
+                <!-- EXAMPLE -4 -->
+                <v-col cols="12">
+                    <c-card title="Expandable rows" outlined>
+                        <c-table
+                            :headers="tableData4.headers"
+                            itemKey="name"
+                            :items="tableData4.desserts"
+
+                            showExpand
+                            :selected.sync="tableData4.selected"
+                        >
+                            <template v-slot:expanded="item">
+                                <div>
+                                    {{item}}
+                                </div>
+                            </template>
+                        </c-table>
+                    </c-card>
+                </v-col>
+
+                <!-- EXAMPLE -5 -->
+                <v-col cols="12">
+                    <c-card title="Single expandable rows" outlined>
+                        <c-table
+                            :headers="tableData5.headers"
+                            itemKey="name"
+                            :items="tableData5.desserts"
+
+                            showExpand
+                            singleExpand
+                            :selected.sync="tableData5.selected"
+                        >
+                            <template v-slot:expanded="item">
+                                <div>
+                                    {{item}}
+                                </div>
+                            </template>
+                        </c-table>
+                    </c-card>
+                </v-col>
+
+                <!-- EXAMPLE -6 -->
+                <v-col cols="12">
+                    <c-card title="Custom item slot" outlined>
+                        <c-table
+                            :headers="tableData1.headers"
+                            itemKey="name"
+                            :items="tableData1.desserts"
+                        >
+                            <template #calories="{ item }">
+                                <v-chip color="green" dark>{{ item.calories }}</v-chip>
+                            </template>
+
+                            <template #protein="{ item }">
+                                <v-chip color="blue" dark>{{ item.protein }}</v-chip>
+                            </template>
+                        </c-table>
+                    </c-card>
+                </v-col>
+            </v-row>
+
+
+            <v-snackbar v-model="snackFlag" :timeout="3000" color="deepOrange">
+                {{ snackText }}
+                <v-btn text @click="snackFlag = false">Close</v-btn>
+            </v-snackbar>
+        </v-container>
     </div>
 </template>
 <script>

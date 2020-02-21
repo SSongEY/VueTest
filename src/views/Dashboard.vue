@@ -1,10 +1,10 @@
 <template>
     <div id="page-dashboard">
-        <v-layout justify-space-around row fill-height mt-12>
-            <v-flex xs12 class="text-center">
+        <v-row justify="center">
+            <v-col cols="12" class="text-center">
                 <span class="text-center display-3">Dashboard</span>
-            </v-flex>
-        </v-layout>
+            </v-col>
+        </v-row>
     </div>
 </template>
 
