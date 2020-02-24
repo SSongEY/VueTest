@@ -49,7 +49,7 @@
                 <v-icon class="app-menu-logo-icon">local_car_wash</v-icon> LOGO
             </div>
             <!--<hr class="app-menu-separator">-->
-            <v-list flat>
+            <!--<v-list flat>
                 <v-list-item class="app-menu-item" v-for="route in routes" :key="route.name" router :to="route.path" active-class="border" @click="currentPage = route">
                     <v-list-item-action>
                         <v-icon>{{route.icon}}</v-icon>
@@ -58,24 +58,69 @@
                         <v-list-item-title class="app-menu-item-text">{{route.name}}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+            </v-list>-->
+            <v-list  v-for="route in routes" :key="route.name">
+
+                <v-list-item v-if="route.type === 'menu'" router :to="route.path" active-class="border" @click="currentPage = route">
+                    <v-list-item-action>
+                        <v-icon>{{route.icon}}</v-icon>
+                    </v-list-item-action>
+                    <v-list-item-content>
+                        <v-list-item-title class="app-menu-item-text">{{route.name}}</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+
+                <v-list-group
+                        v-else
+                        active-class="border"
+                        :prepend-icon="route.icon"
+                >
+                    <template v-slot:activator>
+                        <v-list-item-content>
+                            <v-list-item-title v-text="route.name"></v-list-item-title>
+                        </v-list-item-content>
+                    </template>
+
+                    <v-list-item
+                        v-for="subRoute in route.subRoutes"
+                        :key="subRoute.name"
+                        route
+                        :to="subRoute.path"
+                        @click="currentPage = subRoute"
+                        active-class="border"
+                    >
+                        <v-list-item-action class="pl-5">
+                            <v-icon>{{subRoute.icon}}</v-icon>
+                        </v-list-item-action>
+                        <v-list-item-content>
+                            <v-list-item-title class="app-menu-item-text">{{subRoute.name}}</v-list-item-title>
+                        </v-list-item-content>
+
+                    </v-list-item>
+                </v-list-group>
             </v-list>
+
         </v-navigation-drawer>
     </nav>
 </template>
 <script>
 // import Popup from './Popup.vue'
 import routes from '../router/routes';
+import dev_routes from '../router/dev_routes';
 export default {
     data: () => ({
         drawer: true,
-        routes: routes,
+        routes: [],
         currentPage: {}
     }),
     components: {
         // Popup
     },
-    mounted() {
+    created() {
+        this.routes = process.env.NODE_ENV === 'development'? [...dev_routes, ...routes] : routes;
         this.currentPage = this.$route;
+    },
+    mounted() {
     }
 
 }

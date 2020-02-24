@@ -1,47 +1,18 @@
 import Dashboard from '../views/Dashboard.vue';
 
-import Cards from '../views/Cards';
-import Buttons from '../views/Buttons.vue';
-import Tables from '../views/Tables.vue';
-import Charts from '../views/Charts.vue';
-import Progresses from '../views/Progresses.vue';
+import Cards from '../views/_dev/Cards';
+import Buttons from '../views/_dev/Buttons.vue';
+import Tables from '../views/_dev/Tables.vue';
+import Charts from '../views/_dev/Charts.vue';
+import Progresses from '../views/_dev/Progresses.vue';
 
 const routes = [
     {
         path: '/',
+        type: "menu",
         name: 'Dashboard',
         icon: 'dashboard',
         component: Dashboard
-    },
-    {
-        path: '/cards',
-        name: 'Cards',
-        icon: 'settings_system_daydream',
-        component: Cards
-    },
-    {
-        path: '/buttons',
-        name: 'Buttons',
-        icon: 'format_bold',
-        component: Buttons
-    },
-    {
-        path: '/tables',
-        name: 'Tables',
-        icon: 'border_all',
-        component: Tables
-    },
-    {
-        path: '/progresses',
-        name: 'Progresses',
-        icon: 'rotate_right',
-        component: Progresses
-    },
-    {
-        path: '/charts',
-        name: 'Charts',
-        icon: 'insert_chart_outlined',
-        component: Charts
     },
     // {
     //     path: '/projects',
