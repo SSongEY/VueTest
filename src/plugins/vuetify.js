@@ -11,6 +11,7 @@ export default new Vuetify({
     theme: {
         themes: {
             light: {
+                lightRed: '#f87979',
                 red: '#ff3a4c',
                 deepRed: '#ff0017',
                 green: '#58deb6',

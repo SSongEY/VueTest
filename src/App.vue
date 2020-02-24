@@ -26,4 +26,7 @@ export default {
 </script>
 <style lang="scss">
 @import './styles/index.scss';
+.content-main {
+  background-color: #f9f9f9;
+}
 </style>
