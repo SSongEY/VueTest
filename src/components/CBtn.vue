@@ -1,7 +1,7 @@
 <template>
     <v-btn
         @click="clicked($event)"
-        class="white--text font-weight-regular"
+        class="font-weight-regular"
         :class="classes"
 
         :disabled="disabled"
@@ -85,6 +85,13 @@ export default {
             this.$emit('click', e);
         }
     },
+    created() {
+        if(this.text || this.icon || this.outlined) {
+            this.classes = `${this.color}--text ${this.classes}`
+        } else {
+            this.classes = `white--text  ${this.classes}`
+        }
+    }
 }
 </script>
 
