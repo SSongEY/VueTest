@@ -1,6 +1,6 @@
 <template>
     <div id="progress-bar-line"
-         :style="{ width: `${this.width}px` }"
+         :style="{ width: this.width }"
     >
         <v-container v-if="type === '1'" class="top-text">
             <v-layout row fill-height>
@@ -90,13 +90,11 @@ export default {
         },
         height: { // progress height
             type: String,
-            required: true,
             default: "30"
         },
         width: { // progress width
             type: String,
-            required: true,
-            default: "100"
+            default: "100%"
         },
         strokeWidth: { // progress stroke width
             type: String,

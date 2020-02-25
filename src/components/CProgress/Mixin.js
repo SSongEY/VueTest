@@ -46,6 +46,11 @@ export const ProgressBarMixin = {
                 zeroOffset: 0,
                 progressPadding: 0,
             }
+        };
+
+        if(this.line) {
+            if(this.width.indexOf('%') == -1)
+                this.width = px(this.width);
         }
     },
     mounted () {
@@ -69,28 +74,28 @@ export const ProgressBarMixin = {
     computed: {
         // ProgressBar Type
         cylinder () {
-            return this.shape === 'cylinder'
+            return this.shape === 'cylinder';
         },
         line () {
-            return this.shape === 'line'
+            return this.shape === 'line';
         },
         circle () {
-            return this.shape === 'circle'
+            return this.shape === 'circle';
         },
         battery () {
-            return this.shape === 'battery'
+            return this.shape === 'battery';
         },
         progressBarType () {
             if (this.cylinder) {
-                return 'ProgressBarCylinder'
+                return 'ProgressBarCylinder';
             } else if (this.line) {
-                return 'ProgressBarLine'
+                return 'ProgressBarLine';
             } else if (this.circle) {
-                return 'ProgressBarCircle'
+                return 'ProgressBarCircle';
             } else if (this.battery) {
-                return 'ProgressBarBattery'
+                return 'ProgressBarBattery';
             }
-            return 'ProgressBarLine'
+            return 'ProgressBarLine';
         },
         // ProgressBar Size
         // width () {
@@ -120,7 +125,7 @@ export const ProgressBarMixin = {
         lineStyleSvgFrame () {
             return {
                 height: px(this.height),
-                width: px(this.width)
+                width: this.width //px(this.width)
             }
         },
         batteryStyleSvgFrame () {

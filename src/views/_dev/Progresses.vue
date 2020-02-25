@@ -43,9 +43,8 @@
                     <span class="subtitle-1 font-weight-light deepOrange--text">Custom Progress 예제</span>
                 </v-col>
 
-                <!-- EXAMPLE -1 -->
                 <v-col cols="12">
-                    <c-card title="Line Progress" outlined>
+                    <c-card title="Line Progress" shaped>
                         <v-row justify="center">
 
                             <!-- EXAMPLE -1 -->
@@ -56,7 +55,6 @@
                                         :value="65"
                                         color="orange"
                                         height="10"
-                                        width="300"
                                         strokeWidth="30"
                                         fontColor="red"
                                         fontSize="14"
@@ -71,10 +69,9 @@
                                 <c-card title="Type2">
                                     <c-progress-line
                                         type="2"
-                                        :value="40"
+                                        :value="20"
                                         color="blue"
                                         height="20"
-                                        width="300"
                                         strokeWidth="30"
                                         fontColor="black"
                                         fontSize="13"
@@ -89,7 +86,7 @@
 
 
                 <v-col cols="12" class="pt-10">
-                    <c-card title="Circle Progress" outlined>
+                    <c-card title="Circle Progress" shaped>
                         <v-row justify="center">
 
                             <!-- EXAMPLE -3 -->
