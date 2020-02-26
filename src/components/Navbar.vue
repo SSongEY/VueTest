@@ -71,6 +71,7 @@
                 </v-list-item>
 
                 <v-list-group
+                        color="grey"
                         v-else
                         active-class="border"
                         :prepend-icon="route.icon"
