@@ -1,8 +1,7 @@
 <template>
     <v-btn
-        @click="clicked($event)"
         class="font-weight-regular"
-        :class="classes"
+        :class="getClasses"
 
         :disabled="disabled"
         :color="color"
@@ -16,6 +15,8 @@
         :small="small"
         :large="large"
         :block="block"
+
+        v-on="$listeners"
     >
         <v-icon v-if="iconName&&!(this.$slots.default)">{{iconName}}</v-icon>
         <v-icon v-else-if="iconName&&this.$slots.default" left>{{iconName}}</v-icon>
@@ -79,19 +80,32 @@ export default {
             type: Boolean,
             default: false
         },
+
+        //etc
+        href: {
+            type: String,
+            default: undefined
+        },
+        link: {
+            type: Boolean,
+            default: false
+        },
+        target: {
+            type: String,
+            default: undefined
+        }
     },
     methods: {
-        clicked: function(e) {
-            this.$emit('click', e);
-        }
     },
-    created() {
-        if(this.text || this.icon || this.outlined) {
-            this.classes = `${this.color}--text ${this.classes}`
-        } else {
-            this.classes = `white--text  ${this.classes}`
-        }
-    }
+    computed: {
+        getClasses() {
+            if(this.text || this.icon || this.outlined) {
+                return `${this.color}--text ${this.classes}`
+            } else {
+                return `white--text  ${this.classes}`
+            }
+        },
+    },
 }
 </script>
 
