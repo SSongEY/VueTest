@@ -3,6 +3,7 @@ import Buttons from '../views/_dev/Buttons.vue';
 import Tables from '../views/_dev/Tables.vue';
 import Charts from '../views/_dev/Charts.vue';
 import Progresses from '../views/_dev/Progresses.vue';
+import InfiniteScrollTables from '../views/_dev/InfiniteScrollTables.vue';
 
 const routes = [
     {
@@ -30,6 +31,13 @@ const routes = [
                 name: 'Tables',
                 icon: 'border_all',
                 component: Tables
+            },
+            {
+                path: '/scroll_tables',
+                type: "menu",
+                name: 'Scroll_Tables',
+                icon: 'border_all',
+                component: InfiniteScrollTables
             },
             {
                 path: '/progresses',
