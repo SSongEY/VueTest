@@ -118,7 +118,8 @@ export default {
         // Popup
     },
     created() {
-        this.routes = process.env.NODE_ENV === 'development'? [...dev_routes, ...routes] : routes;
+        const usageRoutes = routes.filter(item => !(item.type === 'hidden'));
+        this.routes = process.env.NODE_ENV === 'development'? [...dev_routes, ...usageRoutes] : usageRoutes;
         this.currentPage = this.$route;
     },
     mounted() {
