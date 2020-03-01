@@ -4,6 +4,7 @@ import Tables from '../views/_dev/Tables.vue';
 import Charts from '../views/_dev/Charts.vue';
 import Progresses from '../views/_dev/Progresses.vue';
 import InfiniteScrollTables from '../views/_dev/InfiniteScrollTables.vue';
+import CommonAlert from '../views/_dev/CommonAlert.vue';
 
 const routes = [
     {
@@ -52,6 +53,13 @@ const routes = [
                 name: 'Charts',
                 icon: 'insert_chart_outlined',
                 component: Charts
+            },
+            {
+                path: '/alerts',
+                type: "menu",
+                name: 'Alert',
+                icon: 'info',
+                component: CommonAlert
             },
         ]
     },

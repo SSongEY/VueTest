@@ -6,9 +6,24 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 
   state: {
+    userInfo: {
+
+    },
+    alert: {
+      open: false,
+      timeout: undefined,
+      msg: '',
+      err: false,
+      info: true,
+      persistent: false
+    }
   },
 
   mutations: {
+    alert(state, payload) {
+      state.alert = payload;
+      state.open = !state.open;
+    },
   },
 
   actions: {
