@@ -114,8 +114,7 @@ export default {
 
         height: {
             type: String || Number,
-            default: "31." +
-                "7217+++963328500"
+            default: "500"
         },
     },
     data: () => ({
@@ -144,7 +143,7 @@ export default {
             this.$emit('click', e);
         },
         scrollEvent() {
-            if(this.listElm.scrollTop + this.listElm.clientHeight >= this.listElm.scrollHeight) {
+            if(this.listElm.scrollTop + this.listElm.clientHeight + 2 >= this.listElm.scrollHeight) {
                 this.loadMore();
             }
         },
