@@ -36,6 +36,15 @@
                     </c-card>
                 </v-col>
 
+                <!-- EXAMPLE -4 -->
+                <v-col cols="12">
+                    <c-card title="Confirm Dialog">
+                        <v-row justify="space-around">
+                            <c-btn color="blue" @click="onConfirmDialogOpen">Confirm Dialog</c-btn>
+                        </v-row>
+                    </c-card>
+                </v-col>
+
             </v-row>
         </v-container>
     </div>
@@ -61,6 +70,19 @@ export default {
         onInfoDialogOpen3: function(e) {
             this.$store.commit('alert', {open: true, timeout: 3000, msg: "info message"});
         },
+
+        onConfirmDialogOpen() {
+            this.$store.commit('alert',
+              {
+                  open: true, persistent: true, msg: "confirm message",
+                  confirm: true, callBack: () => {
+                      this.confirmDialogCallback();
+                  }
+              });
+        },
+        confirmDialogCallback() {
+            alert('confirm!');
+        }
     }
 }
 </script>

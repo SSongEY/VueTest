@@ -15,7 +15,9 @@ export default new Vuex.Store({
       msg: '',
       err: false,
       info: true,
-      persistent: false
+      confirm: false,
+      persistent: false,
+      callBack: () => {}
     }
   },
 

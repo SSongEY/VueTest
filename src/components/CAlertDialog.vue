@@ -24,6 +24,10 @@
                 <v-icon color="red">warning</v-icon>
                 <span class="pl-1">Error</span>
             </v-card-title>
+            <v-card-title v-else-if="confirm">
+                <v-icon color="orange">error_outline</v-icon>
+                <span class="pl-1">Confirm</span>
+            </v-card-title>
             <v-card-title v-else>
                 <v-icon color="blue">check_circle</v-icon>
                 <span class="pl-1">Info</span>
@@ -41,15 +45,13 @@
 
             <v-divider></v-divider>
 
-            <v-card-actions v-if="timeout ? false : true">
+            <v-card-actions v-if="confirm">
                 <v-spacer></v-spacer>
-                <c-btn
-                    color="blue"
-                    text
-                    @click="closeDialog"
-                >
-                    OK
-                </c-btn>
+                <c-btn color="grey" text @click="closeDialog(false)"> CANCEL </c-btn>
+                <c-btn color="blue" text @click="closeDialog(true)"> OK </c-btn>
+            </v-card-actions>
+            <v-card-actions v-else-if="timeout ? false : true">
+                <c-btn color="blue" text @click="closeDialog">OK</c-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -59,6 +61,7 @@
 export default {
     data: () => ({
         openFlag: false,
+        confirmFlag: undefined
     }),
     props: {
         open: {
@@ -76,6 +79,10 @@ export default {
         info: {
             type: Boolean,
             default: true
+        },
+        confirm: {
+            type: Boolean,
+            default: false
         },
         msg: {
             type: String,
@@ -103,8 +110,11 @@ export default {
         }
     },
     methods: {
-        closeDialog() {
+        closeDialog(confirmFlag) {
             this.openFlag = false;
+            if(confirmFlag) {
+                this.$store.state.alert.callBack();
+            }
             this.$store.commit('alert', {open: false});
         }
     },

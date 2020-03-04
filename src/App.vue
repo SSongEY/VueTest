@@ -13,6 +13,7 @@
         :msg="alert.msg"
         :err="alert.err"
         :info="alert.info"
+        :confirm="alert.confirm"
         :persistent="alert.persistent"
     />
   </v-app>
